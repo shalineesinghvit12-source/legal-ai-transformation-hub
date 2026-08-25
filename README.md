@@ -34,6 +34,10 @@ It demonstrates more than a chatbot. It combines:
 
 See [JD capability mapping](docs/jd-capability-mapping.md) for the full alignment.
 
+## Focused low-code pilot: AI Customer Email Assistant
+
+For a simpler implementation using Copilot Studio, Power Automate, SharePoint, Outlook, and Teams, use the [AI Customer Email Assistant](projects/customer-email-assistant/README.md). This pilot requires no custom code, Dataverse, Power Apps, or Power BI. It includes the business requirements, SharePoint design, Copilot instructions, flow blueprint, Adaptive Card, UAT plan, and interview guide.
+
 ## Architecture
 
 ```mermaid
