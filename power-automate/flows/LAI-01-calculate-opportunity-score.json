@@ -1,0 +1,22 @@
+{
+  "name": "LAI-01 Calculate Opportunity Score",
+  "trigger": "Dataverse child flow called from Copilot or portfolio app",
+  "inputs": ["opportunityId"],
+  "actions": [
+    "Get Opportunity row",
+    "Validate eight ratings are integers from 1 to 5",
+    "Calculate weighted score using ../expressions.md",
+    "Apply forced Governance Review when Risk equals 5",
+    "Apply forced Discovery Required when Feasibility is 1 or 2",
+    "Calculate expected annual hours and optional financial value",
+    "Update PriorityScore PriorityBand benefit fields and formula version",
+    "Create immutable Scored AuditEvent",
+    "Return score band components and benefit estimates"
+  ],
+  "exceptions": [
+    "Missing or invalid rating: mark Scoring Failed and notify owner",
+    "Dataverse write conflict: retry with exponential policy then create support event"
+  ],
+  "security": "Run-only users provide no connections; owner uses governed connection reference"
+}
+

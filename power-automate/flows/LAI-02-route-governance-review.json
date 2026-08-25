@@ -1,0 +1,24 @@
+{
+  "name": "LAI-02 Route Governance Review",
+  "trigger": "Opportunity stage changes to Governance",
+  "actions": [
+    "Get opportunity and active governance assessment",
+    "Validate business sponsor and accountable owner",
+    "Build reviewer list from risk and data classification matrix",
+    "Create parallel review tasks for Legal Technology Security Privacy Data and Platform as applicable",
+    "Post adaptive-card notification in Teams",
+    "Wait for approve reject or request-information responses",
+    "Aggregate decisions and conditions",
+    "Require final accountable governance decision",
+    "Update assessment decision stage RAG and next milestone",
+    "Create one AuditEvent per reviewer decision",
+    "Notify submitter owner sponsor and PMO"
+  ],
+  "decision_rules": {
+    "rejected": "Any Critical control failure or final accountable rejection",
+    "conditional": "Approval with documented conditions owner and due date",
+    "approved": "All mandatory reviewers complete and final accountable approval recorded"
+  },
+  "timeout": "Escalate after two business days and mark Amber; do not auto-approve"
+}
+

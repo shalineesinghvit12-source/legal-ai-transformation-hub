@@ -1,0 +1,26 @@
+{
+  "title": "AI-assisted vendor agreement review",
+  "problem_statement": "Legal operations manually reviews vendor agreements and records key dates, obligations, and governing law in a tracking sheet.",
+  "practice_group": "Legal Operations",
+  "business_sponsor": "Synthetic Legal Operations Director",
+  "monthly_volume": 200,
+  "minutes_per_transaction": 30,
+  "data_classification": "Confidential",
+  "scoring": {
+    "business_impact": 5,
+    "hours_saved_potential": 5,
+    "client_value": 4,
+    "strategic_alignment": 5,
+    "feasibility": 4,
+    "adoption_readiness": 4,
+    "effort": 2,
+    "risk": 2
+  },
+  "benefit_assumptions": {
+    "monthly_volume": 200,
+    "minutes_per_transaction": 30,
+    "automation_rate": 0.6,
+    "loaded_hourly_rate": 100
+  }
+}
+

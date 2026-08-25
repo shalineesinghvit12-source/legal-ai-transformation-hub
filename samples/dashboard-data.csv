@@ -1,0 +1,6 @@
+initiative_id,title,practice_group,stage,rag,priority_score,risk,expected_hours,validated_hours,trained_users,active_users,satisfaction,extraction_accuracy,human_override_rate
+AI-1001,AI-assisted vendor agreement review,Legal Operations,Pilot,Green,88,Medium,720,0,25,18,4.3,0.93,0.12
+AI-1002,Matter opening completeness assistant,Business Intake,Governance,Amber,78,High,460,0,0,0,0,0,0
+AI-1003,Knowledge search assistant,Corporate,Discovery,Green,69,Medium,540,0,0,0,0,0,0
+AI-1004,Invoice narrative classification,Finance,Benefits,Green,81,Low,850,790,42,37,4.5,0.96,0.07
+AI-1005,Litigation deadline extraction,Litigation,Feasibility,Red,74,Critical,610,0,0,0,0,0,0

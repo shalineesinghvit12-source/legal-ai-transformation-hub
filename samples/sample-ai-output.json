@@ -1,0 +1,17 @@
+{
+  "agreement_type": "Vendor Services Agreement",
+  "customer": "Northwind Legal Operations LLC",
+  "vendor": "Contoso Document Services Inc.",
+  "effective_date": "2026-03-01",
+  "initial_end_date": "2027-02-28",
+  "renewal_term": "One Year",
+  "renewal_notice_days": 60,
+  "payment_terms_days": 30,
+  "initial_fee_cap_usd": 120000,
+  "security_incident_notice_hours": 48,
+  "breach_cure_days": 30,
+  "convenience_termination_notice_days": 45,
+  "data_return_days": 15,
+  "governing_law": "Illinois"
+}
+

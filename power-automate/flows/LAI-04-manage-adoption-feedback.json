@@ -1,0 +1,33 @@
+{
+  "name": "LAI-04 Manage Adoption and Feedback",
+  "triggers": [
+    "Opportunity enters Pilot",
+    "Daily scheduled reminder",
+    "Microsoft Forms feedback response submitted"
+  ],
+  "pilot_actions": [
+    "Create target-user cohort and adoption plan",
+    "Send role-specific launch communication",
+    "Assign training and record Invited event",
+    "Schedule 7-day and 30-day surveys",
+    "Create product-owner review at 30 days"
+  ],
+  "feedback_actions": [
+    "Get response details",
+    "Create Feedback row",
+    "Classify theme and sentiment with approved prompt",
+    "Require human review for harmful or sensitive content",
+    "Create improvement action when satisfaction is 1 or 2 or sentiment is Negative",
+    "Notify product owner without exposing response beyond authorized users"
+  ],
+  "metrics": [
+    "Training completion rate",
+    "Activation rate",
+    "30-day active usage",
+    "Satisfaction",
+    "User confidence",
+    "Estimated minutes saved",
+    "Open improvement actions"
+  ]
+}
+

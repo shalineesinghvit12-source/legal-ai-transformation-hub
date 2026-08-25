@@ -1,0 +1,31 @@
+{
+  "name": "LAI-03 Process Legal Document",
+  "trigger": "Copilot action or approved SharePoint library item created",
+  "actions": [
+    "Verify current user and approved pilot Opportunity",
+    "Validate extension size data classification and required metadata",
+    "Invoke approved malware-scanning control when available",
+    "Store document in governed SharePoint library",
+    "Create DocumentReview row with Processing status",
+    "Run AI Builder or approved extraction action",
+    "Parse structured JSON using fixed schema",
+    "Calculate minimum field confidence and detect high-risk indicators",
+    "Store structured result model version prompt version and source citations",
+    "If confidence below threshold or risk present create human review task",
+    "Otherwise set Approved for pilot sampling policy",
+    "Create AuditEvent and notify requester"
+  ],
+  "human_review": [
+    "Reviewer compares every extracted field against source",
+    "Corrections require rationale",
+    "Before and after values are written to AuditEvent",
+    "Final approval does not represent legal approval of the agreement"
+  ],
+  "exceptions": [
+    "Unsupported file: reject safely",
+    "Unreadable document: mark Failed and request replacement",
+    "AI timeout: retry twice then route to manual queue",
+    "Invalid JSON: preserve raw response in restricted diagnostic log and route to manual queue"
+  ]
+}
+

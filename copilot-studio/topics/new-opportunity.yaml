@@ -1,0 +1,31 @@
+topic: New AI opportunity
+trigger_phrases:
+  - I have an AI idea
+  - automate a process
+  - propose a use case
+  - submit an opportunity
+required_fields:
+  - title
+  - problem_statement
+  - current_process
+  - practice_group
+  - business_sponsor
+  - users_affected
+  - monthly_volume
+  - minutes_per_transaction
+  - systems
+  - data_classification
+  - expected_outcome
+  - known_risks
+steps:
+  - gather_missing_fields_one_at_a_time
+  - generate_structured_summary
+  - display_assumptions_and_risks
+  - request_user_confirmation
+  - invoke_create_opportunity_action
+  - return_opportunity_id_and_next_steps
+failure_behavior:
+  - preserve_confirmed_answers
+  - explain_which_action_failed
+  - provide_manual_intake_link
+
