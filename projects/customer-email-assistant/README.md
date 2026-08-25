@@ -1,10 +1,10 @@
-# AI Customer Email Assistant
+# Governed AI Policy Response Assistant
 
-A low-code Microsoft Copilot Studio and Power Automate pilot for drafting policy-grounded customer email responses, routing every draft through a human reviewer, and retaining an auditable record of the decision.
+A low-code Microsoft Copilot Studio and Power Automate pilot for drafting policy-grounded email responses, routing every draft through a human reviewer, and retaining an auditable decision record.
 
-## Why this project fits the Manager of AI Transformation role
+## Portfolio objective
 
-The pilot demonstrates AI use-case discovery, process analysis, workflow redesign, Microsoft 365 integration, low-code delivery, governance, human oversight, cross-functional delivery, UAT, adoption planning, feedback, and measurable outcomes. It deliberately excludes Power BI. Operational status and pilot measures are maintained in SharePoint views.
+Demonstrate how a business analyst can take an AI opportunity from discovery through requirements, process redesign, governance, low-code solution design, UAT and adoption planning. The MVP deliberately excludes Power BI, Power Apps, Dataverse and custom code.
 
 ## Target process
 
@@ -32,6 +32,12 @@ SharePoint knowledge in Copilot Studio is configured as a managed knowledge sour
 | `power-automate-flow.md` | Flow actions, mappings, exception paths, and test notes |
 | `adaptive-card.json` | Editable Teams human-review card |
 | `uat-and-interview-guide.md` | UAT scenarios, demonstration plan, interview answers, and resume wording |
+| `portfolio-case-study.md` | Concise business case for recruiters and hiring managers |
+| `Governed_AI_Policy_Response_Assistant_Case_Study.pdf` | One-page recruiter-ready case study |
+| `governance-and-controls.md` | Risk register, RACI and operational controls |
+| `demo-script.md` | Five-minute demonstration and evidence-capture sequence |
+| `samples/` | Synthetic policies and test inquiries |
+| `evidence/` | UAT scorecard and evidence register |
 
 ## Honest delivery status
 
@@ -56,4 +62,3 @@ Use synthetic policy files and synthetic customer emails for portfolio developme
 - [Call a Copilot Studio agent from Power Automate](https://learn.microsoft.com/en-us/power-automate/call-copilot-studio-agent)
 - [Trigger a flow when email arrives](https://learn.microsoft.com/en-us/power-automate/email-triggers)
 - [Create Teams Adaptive Card flows](https://learn.microsoft.com/en-us/power-automate/create-adaptive-cards)
-
