@@ -26,6 +26,7 @@ SharePoint knowledge in Copilot Studio is configured as a managed knowledge sour
 | File | Purpose |
 | --- | --- |
 | `implementation-guide.md` | Click-by-click tenant build sequence |
+| `tenant-implementation-and-evidence-guide.md` | Practical MVP build, troubleshooting and proof-capture checklist |
 | `business-requirements.md` | BA-ready scope, requirements, controls, and acceptance criteria |
 | `sharepoint-design.md` | Policy library and audit-list configuration |
 | `copilot-agent-instructions.md` | Governed instructions to paste into Copilot Studio |
