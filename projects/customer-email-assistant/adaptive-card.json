@@ -1,0 +1,67 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "AI email draft requires human review",
+      "weight": "Bolder",
+      "size": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Correlation ID", "value": "__CORRELATION_ID__" },
+        { "title": "From", "value": "__SENDER__" },
+        { "title": "Subject", "value": "__SUBJECT__" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Customer inquiry",
+      "weight": "Bolder",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "__CUSTOMER_INQUIRY__",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Review and edit the AI-generated draft. Approval confirms that you verified the response against the approved source.",
+      "wrap": true,
+      "color": "Attention"
+    },
+    {
+      "type": "Input.Text",
+      "id": "finalResponse",
+      "label": "Final response",
+      "value": "__AI_DRAFT__",
+      "isMultiline": true,
+      "isRequired": true,
+      "errorMessage": "A final response is required before approval."
+    },
+    {
+      "type": "Input.Text",
+      "id": "reviewerComments",
+      "label": "Reviewer comments",
+      "isMultiline": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Approve and send",
+      "data": { "decision": "Approve" }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Reject",
+      "data": { "decision": "Reject" }
+    }
+  ]
+}
+
