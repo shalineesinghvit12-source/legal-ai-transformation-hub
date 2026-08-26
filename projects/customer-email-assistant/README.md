@@ -6,6 +6,12 @@ This folder contains the Microsoft Copilot Studio Workflow that I designed, conf
 
 I built the working prototype in **Copilot Studio Workflows**. I did not create or execute a separate Power Automate cloud flow.
 
+## How the prototype is triggered
+
+The implemented workflow uses a **Manual** Start trigger. A tester opens the workflow, enters `EmailSubject` and `CustomerInquiry`, and runs it. Publishing this workflow does not create a user-facing chat interface.
+
+I prepared a conversational-agent configuration so a user message could become the trigger. Copilot Studio refused to create the agent because the academic tenant reported **User license not found** and insufficient permission to create agents. The exact target design, administrator prerequisites, deployment steps, and acceptance criteria are documented in [Conversational Agent Deployment](conversational-agent-deployment.md).
+
 ~~~mermaid
 flowchart LR
     A["Start<br/>EmailSubject + CustomerInquiry"] --> B["Agent<br/>instructions + synthetic policies"]
@@ -27,6 +33,7 @@ flowchart LR
 | Approval and revision execution | Not completed | Callback and credits required |
 | External customer email | Not implemented | Deliberately excluded |
 | End-to-end UAT | Not complete | [UAT scorecard](evidence/uat-scorecard.md) |
+| Conversational user-query trigger | Blocked | Agent configuration prepared; tenant reported missing license/role |
 
 ## Controls I configured
 
@@ -51,6 +58,7 @@ This is an inline governed-context implementation. I do not present it as RAG, a
 | --- | --- |
 | [IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md) | Authoritative implemented, passed, blocked, and unclaimed status |
 | [copilot-agent-instructions.md](copilot-agent-instructions.md) | Instructions and synthetic policy context used in the Agent |
+| [conversational-agent-deployment.md](conversational-agent-deployment.md) | User-query trigger design, tenant blocker, deployment steps, and acceptance criteria |
 | [business-requirements.md](business-requirements.md) | Problem, scope, requirements, stakeholders, and acceptance criteria |
 | [governance-and-controls.md](governance-and-controls.md) | Risks, ownership, responsible-AI controls, and go-live gates |
 | [exception-handling.md](exception-handling.md) | Fail-closed production resilience design |
@@ -75,6 +83,7 @@ I claim only what the screenshots and platform results support:
 - a real workflow was configured and published;
 - the Agent executed successfully for one synthetic inquiry;
 - an Outlook Human Review request was delivered;
-- tenant restrictions prevented callback and complete execution.
+- tenant restrictions prevented callback and complete execution;
+- conversational agent creation was attempted but blocked by a missing user license or role.
 
 I do not claim Power Automate implementation, production deployment, SharePoint grounding, successful end-to-end approval, customer email dispatch, or measured business benefits.

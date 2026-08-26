@@ -20,6 +20,7 @@ This file is the authoritative record of the live portfolio implementation. Targ
 | Approved outcome | ApprovedStatus = ApprovedForRelease; reviewer comment retained |
 | Revision outcome | RejectedStatus = RevisionRequired; reviewer comment retained |
 | Publication | Workflow saved, health-checked, and published |
+| Conversational agent | Configuration prepared in the new-agent editor; creation blocked by missing user license/role |
 
 ## Validation results
 
@@ -34,6 +35,7 @@ This file is the authoritative record of the live portfolio implementation. Targ
 | Complete workflow run | Blocked | Environment reported no available Copilot Credits |
 | Approved branch execution | Not executed | Dependent on successful review callback |
 | Revision branch execution | Not executed | Dependent on successful review callback |
+| Conversational user-query trigger | Blocked | Copilot Studio returned: User license not found; permission to create agents is unavailable |
 
 ## What the evidence proves
 
@@ -64,3 +66,4 @@ This file is the authoritative record of the live portfolio implementation. Targ
 5. Add correlation IDs, durable audit records, monitoring, timeout handling, and support notifications.
 6. Execute the complete safety and exception test pack.
 7. Obtain formal stakeholder approvals before any production pilot.
+8. Create, test, and publish the conversational agent defined in [conversational-agent-deployment.md](conversational-agent-deployment.md) after the required license and role are assigned.

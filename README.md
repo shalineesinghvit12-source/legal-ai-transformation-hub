@@ -47,6 +47,7 @@ My implementation includes:
 | Customer email dispatch | Not implemented |
 | Power Automate cloud flow | Not implemented |
 | SharePoint or vector knowledge source | Not implemented |
+| Conversational user-query trigger | Configuration prepared; blocked by missing tenant license/role |
 | Power BI | Not used |
 
 See [Implementation Status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md) for the authoritative test record.
@@ -74,6 +75,7 @@ The Outlook evidence proves that the Human Review request was delivered and rend
 - [Project overview](projects/customer-email-assistant/README.md)
 - [Implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md)
 - [Agent instructions](projects/customer-email-assistant/copilot-agent-instructions.md)
+- [Conversational agent deployment](projects/customer-email-assistant/conversational-agent-deployment.md)
 - [Business requirements](projects/customer-email-assistant/business-requirements.md)
 - [Governance and controls](projects/customer-email-assistant/governance-and-controls.md)
 - [Exception handling and resilience](projects/customer-email-assistant/exception-handling.md)
