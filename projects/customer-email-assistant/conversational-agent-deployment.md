@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document defines the user-query trigger that would convert the published workflow prototype into a user-facing Copilot experience.
+This document defines the user-query trigger that would convert the published workflow prototype into a user-facing Copilot experience. The authoritative end-to-end component design is maintained in [End-to-End Teams Chatbot Blueprint](teams-chatbot-end-to-end-blueprint.md).
 
 ## Current status
 
@@ -26,6 +26,8 @@ flowchart TD
 ~~~
 
 The current workflow remains manually triggered. Publishing a manual workflow does not create a chat interface.
+
+The Teams design does not place Human Review in the synchronous chat-response path. The agent first returns an unapproved draft, then creates a durable RequestId for asynchronous review. The existing Human Review, If/Else and outcome logic is reused by the review processor.
 
 ## Prepared agent configuration
 
