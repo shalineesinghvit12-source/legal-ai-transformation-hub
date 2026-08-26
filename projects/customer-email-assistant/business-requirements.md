@@ -61,6 +61,14 @@ Provide policy-grounded draft responses for selected low-risk customer inquiries
 | FR-10 | The system shall record the AI draft, final response, reviewer, decision, and timestamps. |
 | FR-11 | Terminal failures shall enter a visible support queue. |
 | FR-12 | Duplicate trigger events shall not create duplicate replies. |
+| FR-13 | An authorized user shall be able to submit a policy inquiry through Microsoft Teams. |
+| FR-14 | The conversational agent shall return the draft without waiting for the human-review decision. |
+| FR-15 | The draft shall be labelled unapproved and unsent. |
+| FR-16 | The agent shall obtain explicit user confirmation before creating a review request. |
+| FR-17 | Each submitted review shall receive a unique RequestId. |
+| FR-18 | The existing Human Review, approval condition and outcome logic shall process the queued request asynchronously. |
+| FR-19 | An authorized user shall be able to retrieve review status by RequestId from Teams. |
+| FR-20 | The agent shall not report approval or revision unless the durable review record contains that state. |
 
 ## Nonfunctional requirements
 
@@ -99,3 +107,11 @@ Targets must be labeled as targets. Resume claims require measured pilot evidenc
 8. Unauthorized users cannot access knowledge or review records.
 9. All priority-one UAT scenarios pass.
 10. Actual benefits are not claimed until measured.
+11. A Teams message can invoke the conversational agent.
+12. The chatbot returns the complete draft structure within the synchronous tool-response limit.
+13. Human Review does not block the Teams conversation.
+14. Approval and revision both update the correct RequestId.
+15. Duplicate submissions return the existing RequestId.
+16. Status lookup does not expose a request to an unauthorized user.
+17. Technical failure leaves the response unsent.
+18. The implementation evidence is updated only after the Teams scenarios pass.
