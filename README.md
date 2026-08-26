@@ -1,91 +1,99 @@
 # Governed AI Policy Response Assistant
 
-> A published low-code Copilot Studio workflow demonstrating policy-grounded drafting, human review, approval branching, transparent AI governance, and an evidence-based resilience roadmap.
+> An independent Microsoft Copilot Studio portfolio project built by Shalinee Singh.
 
-## Executive summary
-
-This portfolio project shows how a business analyst can move an AI use case from problem framing through requirements, process design, responsible-AI controls, low-code configuration, testing, evidence capture, and exception-handling design.
-
-The implemented prototype uses the Microsoft Copilot Studio Workflows experience. A manual test inquiry is passed to a governed Agent, routed to Human Review, evaluated through an approval condition, and recorded as either approved for release or requiring revision.
+I designed, configured, tested, and published this low-code workflow to demonstrate how AI-assisted policy drafting can remain subject to human judgment, clear controls, and honest implementation evidence.
 
 ![Published Copilot Studio workflow](projects/customer-email-assistant/evidence/screenshots/01-published-copilot-workflow.png)
 
-## Verified delivery status
+## What I built
 
-| Component | Verified status |
-| --- | --- |
-| Published Copilot Studio workflow | Complete |
-| Governed Agent instructions and inline synthetic policy context | Complete |
-| Routine identity-policy Agent test | Passed |
-| Outlook Human Review request delivery and rendering | Passed |
-| Human Review response callback | Blocked by tenant HTTP 400 restriction |
-| Teams Human Review notification | Blocked by tenant notification policy |
-| Complete workflow execution | Blocked because the environment has no available Copilot Credits |
-| Production exception handling | Designed; implementation pending capacity |
-| End-to-end UAT and measured benefits | Not claimed |
-| Power BI | Not used |
-
-See the [implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md), [evidence register](projects/customer-email-assistant/evidence/README.md), and [exception-handling design](projects/customer-email-assistant/exception-handling.md).
-
-## Implemented workflow
+I implemented the working prototype entirely in **Microsoft Copilot Studio Workflows**.
 
 ~~~mermaid
 flowchart LR
-    A["Manual test input"] --> B["Governed AI Agent"]
+    A["Manual inquiry input"] --> B["Governed AI Agent"]
     B --> C["Human Review"]
     C --> D{"Approved?"}
     D -->|Yes| E["Record Approved Outcome"]
     D -->|No| F["Record Revision Outcome"]
 ~~~
 
-### Controls demonstrated
+My implementation includes:
 
-- synthetic portfolio data only
-- inbound inquiry treated as untrusted content
-- policy-only drafting with no unsupported commitments
-- explicit legal, privacy, fraud, security, and regulatory escalation
-- no automatic external send
-- human approval required before release
-- reviewer comments retained in outcome variables
-- separate approved and revision branches
-- fail-closed exception-handling design
-- honest documentation of blocked tests and platform constraints
+- manual EmailSubject and CustomerInquiry inputs
+- a governed Agent with three embedded synthetic policies
+- prompt-injection and unsafe-request safeguards
+- structured output containing decision, draft response, policy basis, and review note
+- Human Review with Yes/No decision and reviewer comments
+- approval and revision branches
+- separate outcome variables for each branch
+- a published workflow and successful Agent-node test
+- redacted Outlook Human Review delivery evidence
+- requirements, governance controls, UAT artefacts, exception design, and interview documentation
 
-## Target production architecture
+## Verified status
 
-The repository also contains a future-state design using Outlook, Power Automate, SharePoint or another governed knowledge repository, Teams approvals, and an audit store. Those files are clearly labeled as target architecture and were not represented as the implemented tenant build.
+| Component | Status |
+| --- | --- |
+| Copilot Studio workflow | Configured and published |
+| Agent instructions and synthetic policy context | Implemented |
+| Address-update Agent test | Passed |
+| Outlook Human Review request | Delivered and rendered |
+| Human Review response callback | Blocked by tenant HTTP 400 |
+| Teams notification | Blocked by tenant notification service |
+| Complete workflow run | Blocked by unavailable Copilot Credits |
+| Approval and revision branch execution | Not completed |
+| Customer email dispatch | Not implemented |
+| Power Automate cloud flow | Not implemented |
+| SharePoint or vector knowledge source | Not implemented |
+| Power BI | Not used |
 
-The production resilience pattern uses validation, correlation IDs, bounded retries, Try/Catch/Finally Scopes, Run after conditions, durable error records, alerts, timeout escalation, duplicate prevention, and explicit termination states.
+See [Implementation Status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md) for the authoritative test record.
 
-## Skills demonstrated
+## Why I chose this design
 
-- AI use-case discovery and prioritization
-- business requirements and process redesign
-- Copilot Studio low-code configuration
-- prompt and instruction design
-- human-in-the-loop control design
-- responsible AI and prompt-injection controls
-- UAT planning and evidence management
-- exception handling and operational resilience design
-- Microsoft 365 integration design
-- risk register, RACI, operating model, and go-live gates
-- licensing, capacity, connector, and tenant-policy diagnosis
-- stakeholder-ready technical documentation
+The Agent drafts, but it does not make the final decision or send an external message. Customer communication can create operational, privacy, legal, and reputational risk, so the workflow keeps a reviewer accountable.
 
-## Five-minute review path
+The working prototype uses embedded synthetic policy context because the tenant did not provide an approved SharePoint source or direct local-file knowledge option. I therefore describe it as an inline governed-context prototype, not a RAG or vector-database implementation.
 
-1. Review the [actual implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md).
-2. Inspect the [published workflow and Human Review evidence](projects/customer-email-assistant/evidence/README.md).
-3. Read the [one-page case study](projects/customer-email-assistant/Governed_AI_Policy_Response_Assistant_Case_Study.pdf).
-4. Review the [exception-handling and resilience design](projects/customer-email-assistant/exception-handling.md).
-5. Read the [portfolio case study](projects/customer-email-assistant/portfolio-case-study.md).
-6. Review the [business requirements](projects/customer-email-assistant/business-requirements.md).
-7. Inspect the [governed Agent instructions](projects/customer-email-assistant/copilot-agent-instructions.md).
-8. Review the [governance controls](projects/customer-email-assistant/governance-and-controls.md) and [UAT scorecard](projects/customer-email-assistant/evidence/uat-scorecard.md).
+## Evidence
+
+| Evidence | Link |
+| --- | --- |
+| Published workflow | [Workflow screenshot](projects/customer-email-assistant/evidence/screenshots/01-published-copilot-workflow.png) |
+| Successful Agent test | [Agent test screenshot](projects/customer-email-assistant/evidence/screenshots/02-agent-node-test-passed.png) |
+| Delivered Human Review request | [Redacted Outlook screenshot](projects/customer-email-assistant/evidence/screenshots/03-human-review-request-delivered-redacted.png) |
+| Evidence register | [Evidence README](projects/customer-email-assistant/evidence/README.md) |
+| UAT scorecard | [UAT scorecard](projects/customer-email-assistant/evidence/uat-scorecard.md) |
+
+The Outlook evidence proves that the Human Review request was delivered and rendered. It does not prove that the callback completed.
+
+## Technical documentation
+
+- [Project overview](projects/customer-email-assistant/README.md)
+- [Implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md)
+- [Agent instructions](projects/customer-email-assistant/copilot-agent-instructions.md)
+- [Business requirements](projects/customer-email-assistant/business-requirements.md)
+- [Governance and controls](projects/customer-email-assistant/governance-and-controls.md)
+- [Exception handling and resilience](projects/customer-email-assistant/exception-handling.md)
+- [UAT and interview guide](projects/customer-email-assistant/uat-and-interview-guide.md)
+- [Demonstration script](projects/customer-email-assistant/demo-script.md)
+- [Portfolio case study](projects/customer-email-assistant/portfolio-case-study.md)
+- [One-page case-study PDF](projects/customer-email-assistant/Governed_AI_Policy_Response_Assistant_Case_Study.pdf)
+
+## What I would add for production
+
+After receiving approved capacity and connectors, I would add a managed knowledge source, durable audit storage, correlation IDs, bounded retries, timeout and escalation paths, monitoring, environment promotion, complete branch testing, and formal business, legal, privacy, security, records, architecture, and platform approvals.
 
 ## Responsible-use statement
 
-This is an independent portfolio demonstration using synthetic policies and inquiries. It is not a production system, legal advice, or an implementation for any employer or law firm. Production use would require business-owner, legal, privacy, security, records, architecture, and platform-administrator approval.
+This project uses synthetic policies and inquiries. It is not a production system, legal advice, or an implementation for any employer or law firm. I do not claim end-to-end execution, production deployment, measured time savings, or functionality that the evidence does not support.
+
+## Author
+
+**Shalinee Singh**  
+AI transformation, business analysis, automation, and responsible low-code delivery
 
 ## License
 
