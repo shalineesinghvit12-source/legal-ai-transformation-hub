@@ -35,6 +35,19 @@ flowchart LR
 | End-to-end UAT | Not complete | [UAT scorecard](evidence/uat-scorecard.md) |
 | Conversational user-query trigger | Blocked | Agent configuration prepared; tenant reported missing license/role |
 
+## Teams chatbot extension
+
+I designed a Phase 2 extension that uses the current workflow as the governed processing foundation:
+
+1. A Copilot Studio agent receives the user inquiry in Teams.
+2. Generate Policy Draft reuses the current Agent instructions and returns a structured, unapproved draft immediately.
+3. Submit Review Request creates a RequestId without making the chat wait for a reviewer.
+4. Process Human Review reuses the current Human Review, If/Else and outcome logic asynchronously.
+5. Get Review Status lets the user check the decision from Teams.
+6. No external customer response is sent automatically.
+
+The complete design is documented in [End-to-End Teams Chatbot Blueprint](teams-chatbot-end-to-end-blueprint.md). It is a target implementation until tenant access permits agent creation, Teams publication and complete UAT.
+
 ## Controls I configured
 
 - customer inquiry treated as untrusted input
@@ -59,6 +72,7 @@ This is an inline governed-context implementation. I do not present it as RAG, a
 | [IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md) | Authoritative implemented, passed, blocked, and unclaimed status |
 | [copilot-agent-instructions.md](copilot-agent-instructions.md) | Instructions and synthetic policy context used in the Agent |
 | [conversational-agent-deployment.md](conversational-agent-deployment.md) | User-query trigger design, tenant blocker, deployment steps, and acceptance criteria |
+| [teams-chatbot-end-to-end-blueprint.md](teams-chatbot-end-to-end-blueprint.md) | Teams architecture, current-workflow reuse, data contracts, failure behavior, and UAT |
 | [business-requirements.md](business-requirements.md) | Problem, scope, requirements, stakeholders, and acceptance criteria |
 | [governance-and-controls.md](governance-and-controls.md) | Risks, ownership, responsible-AI controls, and go-live gates |
 | [exception-handling.md](exception-handling.md) | Fail-closed production resilience design |
