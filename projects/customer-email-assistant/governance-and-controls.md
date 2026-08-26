@@ -18,7 +18,7 @@
 | --- | --- | --- | --- |
 | R1 | Hallucinated or unsupported response | Approved knowledge only, uncertainty instruction and human review | Copilot instructions and UAT-03 |
 | R2 | Prompt injection in inbound text | Treat email as untrusted content and test hostile instructions | UAT-08 |
-| R3 | Unauthorized knowledge access | SharePoint permissions, least privilege and access review | Access review record |
+| R3 | Unauthorized knowledge access | Managed knowledge-source permissions, least privilege, and access review | Access review record |
 | R4 | Sensitive information exposure | Synthetic pilot data, DLP policy, restricted logs and retention review | Privacy approval |
 | R5 | Incorrect message sent externally | Mandatory approval branch; no direct AI-to-email path | Flow screenshot and UAT-06 |
 | R6 | Duplicate responses | Internet Message ID duplicate check | UAT-09 |
