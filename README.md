@@ -10,14 +10,14 @@ I designed, configured, tested, and published this low-code workflow to demonstr
 
 I implemented the working prototype entirely in **Microsoft Copilot Studio Workflows**.
 
-~~~mermaid
+```mermaid
 flowchart LR
     A["Manual inquiry input"] --> B["Governed AI Agent"]
     B --> C["Human Review"]
     C --> D{"Approved?"}
     D -->|Yes| E["Record Approved Outcome"]
     D -->|No| F["Record Revision Outcome"]
-~~~
+```
 
 My implementation includes:
 
@@ -36,7 +36,7 @@ My implementation includes:
 
 I designed the next implementation phase to turn the current workflow into a responsive Teams chatbot without discarding the work already completed.
 
-~~~mermaid
+```mermaid
 flowchart TD
     A["User asks in Teams"] --> B["Copilot Studio agent"]
     B --> C["Generate governed draft"]
@@ -46,7 +46,7 @@ flowchart TD
     F --> G["Existing Human Review logic"]
     G --> H{"Approve or revise"}
     H --> I["Recorded status available in Teams"]
-~~~
+```
 
 The design preserves the current Agent instructions, Human Review, approval condition and outcome variables. It separates immediate chat responses from the long-running reviewer decision so the Teams conversation remains responsive.
 
