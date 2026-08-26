@@ -99,6 +99,7 @@ The Outlook evidence proves that the Human Review request was delivered and rend
 - [Agent instructions](projects/customer-email-assistant/copilot-agent-instructions.md)
 - [Conversational agent deployment](projects/customer-email-assistant/conversational-agent-deployment.md)
 - [End-to-end Teams chatbot blueprint](projects/customer-email-assistant/teams-chatbot-end-to-end-blueprint.md)
+- [Teams chatbot RTM and UAT plan](projects/customer-email-assistant/teams-chatbot-rtm-and-uat.md)
 - [Business requirements](projects/customer-email-assistant/business-requirements.md)
 - [Governance and controls](projects/customer-email-assistant/governance-and-controls.md)
 - [Exception handling and resilience](projects/customer-email-assistant/exception-handling.md)
