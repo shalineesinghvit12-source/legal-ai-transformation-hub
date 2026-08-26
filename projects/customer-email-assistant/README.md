@@ -24,6 +24,7 @@ flowchart LR
 | Approval callback | Blocked | Tenant returned HTTP 400 |
 | Teams notification | Blocked | Tenant returned HumanInTheLoopNotificationFailed |
 | Complete workflow run | Blocked | No Copilot Credits were available |
+| Production exception handling | Designed | [Resilience design](exception-handling.md) |
 | End-to-end UAT | Not complete | [UAT scorecard](evidence/uat-scorecard.md) |
 
 ## Why the prototype is governed
@@ -36,6 +37,7 @@ flowchart LR
 - The workflow contains no automatic customer-email action.
 - Reviewer approval and comments are modeled explicitly.
 - Approved and revision outcomes are recorded separately.
+- The target failure design is fail closed: no error is allowed to imply approval or trigger an outbound send.
 
 ## Knowledge approach
 
@@ -43,14 +45,22 @@ The tenant exposed only SharePoint and organization-owned public websites as man
 
 This is an **inline governed-context prototype**, not a vector-search or RAG implementation. The production design would move approved policy content to an organization-managed knowledge source with access controls, lifecycle metadata, and auditability.
 
+## Exception handling
+
+The current published canvas validates the decision path, not the complete failure path. Observed HTTP 400, notification, and credit failures are recorded as blocked evidence.
+
+The [exception-handling design](exception-handling.md) specifies input validation, correlation IDs, bounded retries, Try/Catch/Finally Scopes, Run after conditions, timeouts, escalation, durable error logging, duplicate prevention, alerts, and explicit terminal states. Until that design is implemented and tested, the system must fail closed and use the manual process.
+
 ## Repository guide
 
 | File | Purpose |
 | --- | --- |
 | [IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md) | Authoritative record of what was implemented, tested, and blocked |
 | [portfolio-case-study.md](portfolio-case-study.md) | Interview-ready business and delivery narrative |
+| [Governed_AI_Policy_Response_Assistant_Case_Study.pdf](Governed_AI_Policy_Response_Assistant_Case_Study.pdf) | One-page technical-team case study |
 | [business-requirements.md](business-requirements.md) | Scope, stakeholders, requirements, and acceptance criteria |
 | [copilot-agent-instructions.md](copilot-agent-instructions.md) | Implemented Agent instructions and inline policy context |
+| [exception-handling.md](exception-handling.md) | Failure matrix and production resilience design |
 | [governance-and-controls.md](governance-and-controls.md) | Risk register, RACI, operating controls, and go-live gates |
 | [evidence/README.md](evidence/README.md) | Verified screenshots and evidence status |
 | [evidence/uat-scorecard.md](evidence/uat-scorecard.md) | Executed and blocked test results |
@@ -63,8 +73,9 @@ This is an **inline governed-context prototype**, not a vector-search or RAG imp
 - **Why human review?** Policy and customer communications can create legal, privacy, and reputational risk. The design keeps the AI in a drafting role.
 - **Why inline policies?** It was the safest feasible option under the tenant's restricted knowledge choices. The limitation is recorded rather than hidden.
 - **Why no automatic send?** The approval callback could not be validated; adding an outbound action would create an unsafe and untested path.
+- **What happens when something fails?** The production design fails closed, records the error with a correlation ID, alerts an owner, and moves the item to manual handling. It never assumes approval.
 - **Why preserve blocked evidence?** Transformation work includes identifying platform, licensing, DLP, and operating constraints. Clear escalation is better than overstating completion.
-- **How would production differ?** Managed knowledge, role-based access, standard approvals, audit storage, monitoring, solution packaging, environment promotion, and completed UAT.
+- **How would production differ?** Managed knowledge, role-based access, standard approvals, audit storage, exception handling, monitoring, solution packaging, environment promotion, and completed UAT.
 
 ## Data policy
 
