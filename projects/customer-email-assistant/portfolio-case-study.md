@@ -2,44 +2,50 @@
 
 ## Situation
 
-Business teams answer recurring questions by searching policy documents, deciding which guidance applies, drafting an email and obtaining informal review. The process is slow, inconsistent and difficult to audit. Purely automatic AI responses would introduce unacceptable accuracy, privacy and legal risks.
+Business teams frequently search policy material, interpret the applicable rule, draft a response, and obtain informal review. This creates delay, inconsistent wording, and weak evidence of who approved what. Fully autonomous customer communication would introduce unacceptable policy, privacy, and legal risk.
 
 ## Objective
 
-Design a controlled low-code pilot that shortens drafting time while keeping a person accountable for every external response.
+Create a low-code prototype that demonstrates policy-grounded drafting while keeping a human accountable for release decisions.
 
-## Solution
+## Implemented prototype
 
-- Outlook receives an inquiry in an approved shared mailbox.
-- Power Automate creates a correlation ID and SharePoint audit record.
-- A published Copilot Studio agent drafts a response using approved SharePoint knowledge.
-- Teams presents the inquiry and editable draft to an authorized reviewer.
-- Only an approved response is sent; rejected or sensitive cases are escalated.
-- SharePoint records the draft, final text, reviewer, decision, timing and exception state.
+The published Copilot Studio Workflow accepts a synthetic email subject and inquiry, invokes a governed Agent, sends the draft to Human Review, evaluates a Yes/No approval decision, and records either an approved-for-release or revision-required outcome.
+
+The three short synthetic policies were embedded directly in the Agent instructions because the tenant did not provide an approved file-upload or SharePoint knowledge option for this build. This is accurately described as inline governed context, not vector-search RAG.
 
 ## My contribution
 
-- framed and prioritized the use case using value, feasibility and risk
-- defined scope, stakeholders, functional requirements and acceptance criteria
-- redesigned the end-to-end process with approval and exception paths
-- selected Microsoft 365 components for a low-code MVP
-- designed knowledge metadata, access controls and audit data
-- wrote grounded Copilot instructions and the Power Automate workflow specification
-- created synthetic policies, test inquiries, UAT scenarios and a demo plan
-- defined pilot measures without claiming unverified savings
+- framed and prioritized the use case using value, feasibility, and risk
+- defined stakeholders, scope, requirements, acceptance criteria, and exceptions
+- designed the target and constrained prototype processes
+- configured the Copilot Studio Workflow and Agent instructions
+- created identity, complaint, privacy, and prompt-injection controls
+- implemented Human Review, an approval condition, and outcome recording
+- created synthetic policies, test inquiries, governance artifacts, and UAT evidence
+- diagnosed licensing, capacity, callback, and managed-notification constraints
+- maintained an evidence register that separates passed, partial, blocked, and planned work
 
-## Responsible AI controls
+## Evidence-based results
 
-The agent must use approved knowledge, identify insufficient evidence, resist instructions embedded in inbound email, avoid legal advice and escalate high-risk matters. Human approval is mandatory before sending. Synthetic data is used for portfolio testing.
+- workflow health check: passed
+- workflow publication: passed
+- routine identity-policy Agent test: passed
+- Outlook Human Review request delivery: passed
+- approval callback: blocked by tenant HTTP 400 response
+- Teams review notification: blocked by tenant managed-service error
+- complete workflow execution: blocked by unavailable Copilot Credits
 
-## Pilot measurement
+No performance improvement, production readiness, or end-to-end approval is claimed.
 
-The baseline and target will be agreed before UAT. Measures include median handling time, first-pass acceptance, edit rate, escalation precision, unsupported-answer rate, send-without-approval incidents and audit completeness. Quantified benefits will be reported only after an adequate test sample.
+## Responsible-AI controls
 
-## Delivery status
+The Agent treats customer input as untrusted, uses only embedded approved synthetic policy context, refuses unsupported commitments, avoids legal advice, protects restricted information, and escalates legal, privacy, fraud, security, discrimination, and regulatory cases. No automated external-send action was added.
 
-Requirements, design, agent instructions, flow blueprint, Adaptive Card, governance and test pack are complete. Live tenant configuration, screenshots, executed UAT and solution export remain pending and are not represented as complete.
+## Production roadmap
+
+A production pilot would require managed policy knowledge, role-based permissions, licensing capacity, validated approval notifications, durable audit storage, correlation IDs, monitoring, exception handling, solution packaging, environment promotion, complete UAT, and formal stakeholder approval.
 
 ## Relevance to AI transformation
 
-The case study demonstrates use-case discovery, process analysis, Microsoft Copilot, Power Automate, Microsoft 365 integration, stakeholder alignment, responsible AI governance, change planning, UAT, benefits measurement and structured delivery.
+The work demonstrates use-case discovery, process analysis, Copilot Studio configuration, Microsoft workflow design, responsible-AI governance, stakeholder controls, test strategy, evidence management, platform-constraint diagnosis, and a practical route from prototype to governed pilot.

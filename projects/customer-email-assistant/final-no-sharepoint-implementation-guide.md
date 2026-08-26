@@ -1,5 +1,9 @@
 # Final No-SharePoint Implementation Guide
 
+> [!IMPORTANT]
+> **Target architecture reference - not the validated tenant build.** The implemented portfolio prototype uses Copilot Studio Workflows with manual inputs, inline governed synthetic policy context, Human Review, approval branching, and outcome variables. See [IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md) for verified results and tenant limitations.
+
+
 This is the recommended first working MVP. It uses local policy files uploaded into Copilot Studio, Power Automate for orchestration, Teams for human approval, Outlook for email, and an Excel table in OneDrive for audit history. It does not require SharePoint, Power BI, Power Apps, Dataverse customization or code.
 
 ## Final architecture

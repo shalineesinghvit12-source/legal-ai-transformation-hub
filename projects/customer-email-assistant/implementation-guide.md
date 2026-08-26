@@ -1,5 +1,9 @@
 # Low-code implementation guide
 
+> [!IMPORTANT]
+> **Target architecture reference - not the validated tenant build.** The implemented portfolio prototype uses Copilot Studio Workflows with manual inputs, inline governed synthetic policy context, Human Review, approval branching, and outcome variables. See [IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md) for verified results and tenant limitations.
+
+
 ## Prerequisites
 
 - Copilot Studio maker access and capacity or trial rights

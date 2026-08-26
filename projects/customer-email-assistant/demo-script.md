@@ -1,42 +1,45 @@
-# Five-Minute Demonstration Script
+# Demonstration script
+
+> [!IMPORTANT]
+> This script demonstrates only the **validated Copilot Studio Workflow prototype**. Do not simulate a successful approval callback or customer email send. The tenant blocked those steps; the limitation is part of the engineering evidence.
 
 ## Preparation
 
-- Use only the synthetic policies and inquiries in this repository.
-- Confirm that the Copilot agent is published and the flow is turned on.
-- Open the SharePoint knowledge library, Outlook test mailbox, Teams review channel and SharePoint audit list.
-- Start recording only after checking that no tenant identifiers or unrelated messages are visible.
+- Open the published workflow and its five visible stages.
+- Open the redacted evidence register in [evidence/README.md](evidence/README.md).
+- Use only the synthetic address-update test case.
+- Hide tenant IDs, personal messages, and connection details.
 
-## Demonstration
+## Five-minute technical walkthrough
 
-### 0:00-0:40 - Business problem
+### 0:00–0:45 — Business problem
 
-Explain that staff currently search policy documents and manually draft repetitive responses. The pilot aims to reduce drafting effort while keeping a reviewer accountable.
+Explain that policy-response drafting is repetitive but fully autonomous customer communication creates accuracy, privacy, legal, and reputational risk.
 
-### 0:40-1:20 - Governed knowledge
+### 0:45–1:40 — Implemented workflow
 
-Show the three synthetic policies in SharePoint. Point out status, owner, effective date, review date, category and confidentiality metadata.
+Show: **Start → Agent → Human Review → If/Else → Approved or Revision outcome**. State that the trigger is manual for safe demonstration and repeatable UAT.
 
-### 1:20-2:10 - Trigger and orchestration
+### 1:40–2:35 — Governed Agent
 
-Send test case T01 to the test mailbox. Show the Power Automate run and identify the email trigger, audit-record creation and Copilot action.
+Show the two inputs, the embedded synthetic policies, prompt-injection safeguards, escalation rules, and required structured output: decision, draft, policy basis, and review note.
 
-### 2:10-3:10 - Human review
+### 2:35–3:25 — Agent test evidence
 
-Open the Teams Adaptive Card. Show the original inquiry, grounded draft, editable final-response field and Approve/Reject controls. Make a small edit and approve.
+Open the successful Agent-node screenshot. Explain why the address update is drafted but not completed and why prohibited identity or payment data is not requested.
 
-### 3:10-4:00 - Auditability
+### 3:25–4:10 — Human Review evidence
 
-Show the sent email and matching SharePoint audit record, including correlation ID, reviewer, decision, draft, final response and timestamps.
+Open the redacted Outlook screenshot. Describe it accurately: the review request was delivered and rendered with Yes/No and reviewer-comment inputs. The callback later returned HTTP 400, so approval completion is not claimed.
 
-### 4:00-4:40 - Risk scenario
+### 4:10–4:40 — Decision and audit design
 
-Run T04 or T06. Show that legal threats or hostile prompt instructions are escalated rather than answered automatically.
+Show the If/Else condition and separate outcome variables. Explain that the branch design is published and health-checked, while a complete run remains blocked by tenant credits and notification constraints.
 
-### 4:40-5:00 - Outcome and next step
+### 4:40–5:00 — Production roadmap
 
-Explain the pilot measures and clarify that benefits will be reported after executed UAT, not assumed in advance.
+Close with managed knowledge, durable audit storage, monitoring, retry and timeout handling, solution packaging, environment promotion, and full UAT after capacity and connector approval.
 
-## Evidence to capture
+## Recommended closing statement
 
-Save redacted screenshots as `01-knowledge-library.png` through `05-audit-record.png`. Add a link to the recording in `evidence/README.md`. Never commit connection strings, tenant IDs, personal data or production messages.
+“I built and published a governed Copilot Studio Workflow, validated the Agent response and Human Review request delivery, documented the blocked tenant dependencies, and separated the working prototype from the production target architecture.”

@@ -1,95 +1,84 @@
 # Governed AI Policy Response Assistant
 
-> A low-code Microsoft Copilot Studio and Power Automate case study for drafting policy-grounded email responses with mandatory human review.
+> A published low-code Copilot Studio workflow demonstrating policy-grounded drafting, human review, approval branching, and transparent AI governance.
 
-## Executive overview
+## Executive summary
 
-Customer-service and business teams often spend time searching policy documents, interpreting the relevant guidance, and drafting repetitive email responses. This project redesigns that process using Microsoft 365 services already familiar to business users.
+This portfolio project shows how a business analyst can move an AI use case from problem framing through requirements, process design, responsible-AI controls, low-code configuration, testing, and evidence capture.
 
-Copilot Studio produces a draft grounded in approved SharePoint content. Power Automate coordinates the workflow. A reviewer receives an editable Teams card and must approve the final text before Outlook can send it. SharePoint retains the decision record for audit and improvement.
+The implemented prototype uses the Microsoft Copilot Studio Workflows experience. A manual test inquiry is passed to a governed Agent, routed to Human Review, evaluated through an approval condition, and recorded as either approved for release or requiring revision.
 
-| Portfolio fact | Detail |
+![Published Copilot Studio workflow](projects/customer-email-assistant/evidence/screenshots/01-published-copilot-workflow.png)
+
+## Verified delivery status
+
+| Component | Verified status |
 | --- | --- |
-| Delivery approach | Low-code, human-in-the-loop automation |
-| Microsoft services | Copilot Studio, Power Automate, SharePoint, Teams and Outlook |
-| Primary users | Customer-service or business-operations reviewers |
-| Data used here | Synthetic policies and synthetic inquiries only |
-| Current status | Design and build package complete; tenant deployment and UAT pending |
-| Power BI required | No |
+| Published Copilot Studio workflow | Complete |
+| Governed Agent instructions and inline synthetic policy context | Complete |
+| Routine identity-policy Agent test | Passed |
+| Outlook Human Review request delivery and rendering | Passed |
+| Human Review response callback | Blocked by tenant HTTP 400 restriction |
+| Teams Human Review notification | Blocked by tenant notification policy |
+| Complete workflow execution | Blocked because the environment has no available Copilot Credits |
+| End-to-end UAT and measured benefits | Not claimed |
+| Power BI | Not used |
 
-## Business process
+See the [implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md) and [evidence register](projects/customer-email-assistant/evidence/README.md).
 
-```mermaid
-flowchart TD
-    A["Email received"] --> B["Power Automate creates audit record"]
-    B --> C["Copilot drafts from approved SharePoint policies"]
-    C --> D["Reviewer edits and decides in Teams"]
-    D -->|Approve| E["Outlook sends final response"]
-    D -->|Reject or escalate| F["Route for specialist handling"]
-    E --> G["SharePoint records outcome"]
-    F --> G
-```
+## Implemented workflow
 
-## Business-analysis contribution
+~~~mermaid
+flowchart LR
+    A["Manual test input"] --> B["Governed AI Agent"]
+    B --> C["Human Review"]
+    C --> D{"Approved?"}
+    D -->|Yes| E["Record Approved Outcome"]
+    D -->|No| F["Record Revision Outcome"]
+~~~
 
-The case study covers the work required to move an AI idea toward a controlled pilot:
+### Controls demonstrated
 
-- defined the business problem, scope, stakeholders and acceptance criteria
-- mapped the current and future process and identified exception paths
-- selected a low-code Microsoft 365 architecture
-- designed knowledge governance, permissions and audit requirements
-- added human approval before any external communication
-- defined prompt-injection, privacy, legal-risk and failure test scenarios
-- created a UAT plan, adoption approach and pilot measurement framework
-- documented a phased path from prototype to production assessment
+- synthetic portfolio data only
+- inbound inquiry treated as untrusted content
+- policy-only drafting with no unsupported commitments
+- explicit legal, privacy, fraud, security, and regulatory escalation
+- no automatic external send
+- human approval required before release
+- reviewer comments retained in outcome variables
+- separate approved and revision branches
+- honest documentation of blocked tests and platform constraints
 
-## Controls built into the design
+## Target production architecture
 
-| Risk | Control |
-| --- | --- |
-| Unsupported or fabricated answer | Copilot is instructed to use approved policy knowledge only and escalate when evidence is insufficient |
-| Prompt injection in an email | Incoming content is treated as untrusted data, never as operating instructions |
-| Incorrect external communication | No message can be sent without a reviewer selecting **Approve and send** |
-| Sensitive or legal matter | Threats, litigation, regulatory complaints, fraud and privacy incidents are escalated |
-| Duplicate processing | Internet Message ID is checked before a new audit record is created |
-| Weak accountability | Draft, final response, reviewer, decision, timestamps and errors are logged |
+The repository also contains a future-state design using Outlook, Power Automate, SharePoint or another governed knowledge repository, Teams approvals, and an audit store. Those files are clearly labeled as target architecture and were not represented as the implemented tenant build.
 
-## How to review this portfolio
+## Skills demonstrated
 
-1. Read the [one-page case study](projects/customer-email-assistant/portfolio-case-study.md) or download the [recruiter PDF](projects/customer-email-assistant/Governed_AI_Policy_Response_Assistant_Case_Study.pdf).
-2. Review the [business requirements](projects/customer-email-assistant/business-requirements.md).
-3. Inspect the [Copilot instructions](projects/customer-email-assistant/copilot-agent-instructions.md) and [Power Automate blueprint](projects/customer-email-assistant/power-automate-flow.md).
-4. Examine the [synthetic test pack](projects/customer-email-assistant/samples/test-cases.json) and [UAT scorecard](projects/customer-email-assistant/evidence/uat-scorecard.md).
-5. Use the [implementation guide](projects/customer-email-assistant/implementation-guide.md) to reproduce the pilot in a Microsoft tenant.
+- AI use-case discovery and prioritization
+- business requirements and process redesign
+- Copilot Studio low-code configuration
+- prompt and instruction design
+- human-in-the-loop control design
+- responsible AI and prompt-injection controls
+- UAT planning and evidence management
+- Microsoft 365 integration design
+- risk register, RACI, operating model, and go-live gates
+- licensing, capacity, connector, and tenant-policy diagnosis
+- stakeholder-ready technical documentation
 
-## Evidence status
+## Five-minute review path
 
-This repository intentionally separates completed design evidence from tenant evidence that does not yet exist.
-
-| Evidence | Status |
-| --- | --- |
-| Requirements, workflow, controls and test design | Complete |
-| Copilot instructions and Adaptive Card | Complete |
-| Synthetic policies and test inquiries | Complete |
-| Live Copilot and Power Automate screenshots | Pending tenant build |
-| Executed UAT results and measured benefits | Pending pilot execution |
-| Exported Power Platform solution | Pending tenant build |
-
-See the [evidence register](projects/customer-email-assistant/evidence/README.md). No production, client, matter, employee or privileged data is included.
-
-## Repository structure
-
-| Path | Purpose |
-| --- | --- |
-| `projects/customer-email-assistant/` | Focused portfolio case study and implementation package |
-| `projects/customer-email-assistant/samples/` | Synthetic policy knowledge and test inquiries |
-| `projects/customer-email-assistant/evidence/` | UAT scorecard and live-evidence checklist |
-| `projects/customer-email-assistant/governance-and-controls.md` | Risk, ownership and operating controls |
-| `docs/`, `copilot-studio/`, `power-automate/` and other folders | Earlier enterprise reference materials retained for learning and traceability |
+1. Review the [actual implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md).
+2. Inspect the [published workflow and Human Review evidence](projects/customer-email-assistant/evidence/README.md).
+3. Read the [portfolio case study](projects/customer-email-assistant/portfolio-case-study.md).
+4. Review the [business requirements](projects/customer-email-assistant/business-requirements.md).
+5. Inspect the [governed Agent instructions](projects/customer-email-assistant/copilot-agent-instructions.md).
+6. Review the [governance controls](projects/customer-email-assistant/governance-and-controls.md) and [UAT scorecard](projects/customer-email-assistant/evidence/uat-scorecard.md).
 
 ## Responsible-use statement
 
-This is an independent portfolio case study, not a production system and not legal advice. It is not affiliated with or endorsed by any employer or law firm. A production deployment would require security, privacy, records, legal, technology and business-owner approval.
+This is an independent portfolio demonstration using synthetic policies and inquiries. It is not a production system, legal advice, or an implementation for any employer or law firm. Production use would require business-owner, legal, privacy, security, records, architecture, and platform-administrator approval.
 
 ## License
 
