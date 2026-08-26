@@ -21,6 +21,7 @@ This file is the authoritative record of the live portfolio implementation. Targ
 | Revision outcome | RejectedStatus = RevisionRequired; reviewer comment retained |
 | Publication | Workflow saved, health-checked, and published |
 | Conversational agent | Configuration prepared in the new-agent editor; creation blocked by missing user license/role |
+| Teams chatbot Phase 2 | End-to-end architecture, workflow reuse, contracts, controls and UAT defined; not deployed |
 
 ## Validation results
 
@@ -66,4 +67,6 @@ This file is the authoritative record of the live portfolio implementation. Targ
 5. Add correlation IDs, durable audit records, monitoring, timeout handling, and support notifications.
 6. Execute the complete safety and exception test pack.
 7. Obtain formal stakeholder approvals before any production pilot.
-8. Create, test, and publish the conversational agent defined in [conversational-agent-deployment.md](conversational-agent-deployment.md) after the required license and role are assigned.
+8. Implement the split-flow Teams architecture defined in [teams-chatbot-end-to-end-blueprint.md](teams-chatbot-end-to-end-blueprint.md).
+9. Create, test, and publish the conversational agent defined in [conversational-agent-deployment.md](conversational-agent-deployment.md) after the required license and role are assigned.
+10. Capture Teams chat, review submission, approval, revision and status-lookup evidence before changing any component to Implemented.
