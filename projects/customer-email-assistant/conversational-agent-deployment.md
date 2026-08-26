@@ -17,13 +17,13 @@ The agent name, governed instructions, synthetic policies, and web-search restri
 
 The intended trigger is a user message in the Copilot Studio test chat, a demo website, Microsoft Teams, or Microsoft 365 Copilot.
 
-~~~mermaid
+```mermaid
 flowchart TD
     A["User submits policy inquiry"] --> B["Conversational agent"]
     B --> C["Governed draft"]
     C --> D["Pending human review"]
     D --> E["Existing review workflow"]
-~~~
+```
 
 The current workflow remains manually triggered. Publishing a manual workflow does not create a chat interface.
 
