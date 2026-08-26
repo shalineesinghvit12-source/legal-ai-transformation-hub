@@ -60,7 +60,7 @@ An administrator must:
 3. Paste the governed instructions and synthetic policies.
 4. Remove **Search all websites**.
 5. Save the agent.
-6. Test the three cases in [samples/test-cases.md](samples/test-cases.md).
+6. Test the three cases in [samples/test-cases.json](samples/test-cases.json).
 7. Verify that every answer includes `Pending human review`.
 8. Publish only after the tests pass.
 9. Add an approved channel, such as Microsoft Teams.
