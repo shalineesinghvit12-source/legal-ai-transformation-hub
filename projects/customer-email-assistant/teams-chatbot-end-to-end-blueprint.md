@@ -30,7 +30,7 @@ I will reuse the current configuration through three components:
 
 ## End-to-end architecture
 
-~~~mermaid
+```mermaid
 flowchart TD
     A["User asks question in Teams"] --> B["Copilot Studio conversational agent"]
     B --> C["Generate Policy Draft tool"]
@@ -46,7 +46,7 @@ flowchart TD
     K -->|Revise| M["Record RevisionRequired"]
     N["User asks for status in Teams"] --> O["Get Review Status tool"]
     O --> H
-~~~
+```
 
 ## Reuse of the current workflow
 
