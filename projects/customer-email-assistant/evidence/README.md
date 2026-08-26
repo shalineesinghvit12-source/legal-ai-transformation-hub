@@ -1,35 +1,55 @@
 # Evidence Register
 
-This folder distinguishes verified delivery evidence from planned evidence. Do not use mock screens or design diagrams as proof of a live implementation.
+This register distinguishes implemented evidence, partial validation, target design, and work that remains blocked. Screenshots use synthetic data and redact personal identifiers.
 
-| ID | Evidence | Status | Acceptance condition |
+## Evidence status
+
+| ID | Evidence | Status | What it proves |
 | --- | --- | --- | --- |
-| E01 | Requirements and acceptance criteria | Complete | Reviewed in `business-requirements.md` |
-| E02 | Copilot Studio instructions | Complete | Instructions stored and versioned |
-| E03 | Power Automate workflow blueprint | Complete | Actions, mappings and exceptions documented |
-| E04 | Teams Adaptive Card template | Complete | JSON validates successfully |
-| E05 | Synthetic test pack | Complete | Policies and test cases contain no real data |
-| E06 | Governed policy context | Complete | Synthetic policies embedded in the Agent instructions because tenant knowledge options were restricted |
-| E07 | Published Copilot Studio workflow | Complete | See `screenshots/01-published-copilot-workflow.png` |
-| E08 | Workflow orchestration | Complete (design) | Published flow shows trigger, AI Agent, Human Review, approval condition and outcome branches |
-| E09 | Human-review execution | Partial | Outlook review form delivered; callback failed under tenant restrictions, so no success screenshot is claimed |
-| E10 | SharePoint audit-record screenshot | Pending | Correlation ID, reviewer, decision and timestamps visible |
-| E11 | Executed UAT scorecard | Pending | Results reviewed and signed by pilot owner |
-| E12 | Demonstration recording | Pending | End-to-end synthetic scenario completed |
-| E13 | Exported solution package | Pending | Tenant export contains no secrets or personal data |
+| E01 | Requirements and acceptance criteria | Complete | Business scope and controls are documented |
+| E02 | Implemented Agent instructions | Complete | Governed prompt, safety rules, and inline policies are versioned |
+| E03 | Synthetic policy and test pack | Complete | Demonstration content contains no production data |
+| E04 | Published workflow screenshot | Complete | Copilot Studio workflow is configured and published |
+| E05 | Agent node test | Passed | Agent produced a safe identity-policy draft |
+| E06 | Outlook Human Review request | Delivered | Review request and fields rendered successfully |
+| E07 | Human Review response callback | Blocked | HTTP 400 prevented confirmation |
+| E08 | Teams Human Review notification | Blocked | Tenant returned HumanInTheLoopNotificationFailed |
+| E09 | Complete workflow execution | Blocked | Environment had no available Copilot Credits |
+| E10 | Approved/revision branch execution | Not run | Depends on a successful Human Review callback |
+| E11 | Full UAT scorecard | Partial | One Agent scenario passed; remaining scenarios are pending or blocked |
+| E12 | Production approvals and deployment | Not started | Outside portfolio-prototype scope |
 
-## Verified implementation evidence
+## E04 - Published Copilot Studio workflow
 
 ![Published Copilot Studio policy response workflow](screenshots/01-published-copilot-workflow.png)
 
-**E07 - Published workflow:** Copilot Studio shows the published low-code workflow with manual test inputs, a governed AI Agent, Human Review, an approval decision, and separate approved/revision outcome records.
+The published canvas shows the manual trigger, governed Agent, Human Review, approval condition, and separate approved/revision outcome records.
 
-**Validation status:** The Agent node produced a policy-grounded draft in a successful node test. The Human Review request rendered in Outlook, but its response callback returned HTTP 400; Teams delivery returned a tenant-side notification error. A complete workflow run was also blocked because the DePaul environment had no available Copilot Credits. These constraints are recorded transparently and are not represented as successful end-to-end execution.
+## E05 - Successful Agent node test
+
+![Successful policy-grounded Agent node test](screenshots/02-agent-node-test-passed.png)
+
+The Agent returned a draft for an address-update inquiry. It requested only the permitted case reference and current postal code, warned against emailing restricted credentials, avoided claiming the change was complete, cited the synthetic identity policy, and required human review.
+
+## E06 - Outlook Human Review request delivered
+
+![Redacted Outlook Human Review request](screenshots/03-human-review-request-delivered-redacted.png)
+
+The redacted screenshot proves that Microsoft delivered and rendered the configured review request, AI draft, policy basis, Yes/No decision, and reviewer-comment input. It does **not** prove completed approval: the callback returned HTTP 400 and is recorded as blocked.
+
+## Validation limitations
+
+- Node-level Agent testing succeeded.
+- Outlook Human Review delivery succeeded, but the submit callback failed.
+- Teams notification delivery failed under the tenant's managed notification service.
+- Full workflow execution was blocked by unavailable Copilot Credits.
+- No outbound customer email was configured or sent.
+- No error screenshot is presented as successful evidence.
 
 ## Screenshot standards
 
-- Use PNG format and crop to the relevant interface.
-- Redact tenant URLs, email addresses and identifiers.
-- Add a short caption stating what the image proves.
-- Do not show real client, employee, matter or privileged data.
-- Do not mark an item complete until another person can reproduce the result.
+- PNG format, cropped to the relevant interface
+- personal names, email addresses, tenant URLs, and environment identifiers redacted
+- synthetic inquiries only
+- captions state exactly what each image proves
+- partial or blocked results never labeled complete

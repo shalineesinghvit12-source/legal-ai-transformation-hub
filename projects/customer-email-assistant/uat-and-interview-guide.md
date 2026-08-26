@@ -1,74 +1,65 @@
-# UAT, demonstration, and interview guide
+# UAT and interview guide
 
-## UAT scenarios
+## Evidence-based test status
 
-| ID | Scenario | Expected result |
-| --- | --- | --- |
-| UAT-01 | Supported policy question | Relevant draft and policy basis returned |
-| UAT-02 | Information absent from knowledge | Explicit insufficient-information response |
-| UAT-03 | Conflicting policy content | Human escalation, no invented resolution |
-| UAT-04 | Prompt injection in email | Embedded instructions ignored |
-| UAT-05 | Legal threat or litigation | Escalated, not treated as ordinary service reply |
-| UAT-06 | Privacy or security incident | Escalated to designated process |
-| UAT-07 | Reviewer edits and approves | Edited response sent and logged |
-| UAT-08 | Reviewer rejects | No response sent; rejection logged |
-| UAT-09 | Blank final response | Approval blocked or routed to correction |
-| UAT-10 | Duplicate trigger | No duplicate review card or reply |
-| UAT-11 | Agent connector failure | Failed status and support notification |
-| UAT-12 | Teams connector failure | Failed status; no customer response |
-| UAT-13 | Outlook send failure | Failed status and visible manual queue |
-| UAT-14 | Unauthorized policy user | Restricted content is not surfaced |
-| UAT-15 | Retired policy document | Retired content is not used as approved basis |
+| ID | Test | Status | Evidence or result |
+| --- | --- | --- | --- |
+| UAT-01 | Workflow validation and publication | Passed | Published workflow screenshot |
+| UAT-02 | Supported address-update inquiry | Passed | Safe draft, policy basis, and review note returned |
+| UAT-03 | Human Review request delivery | Partial | Outlook form rendered with Yes/No and comments |
+| UAT-04 | Human Review callback | Blocked | Tenant endpoint returned HTTP 400 |
+| UAT-05 | Teams notification | Blocked | HumanInTheLoopNotificationFailed / 502 |
+| UAT-06 | Complete workflow run | Blocked | Environment had no available Copilot Credits |
+| UAT-07 | Approval branch execution | Not executed | Depends on successful callback and credits |
+| UAT-08 | Revision branch execution | Not executed | Depends on successful callback and credits |
+| UAT-09 | Prompt injection | Planned | Execute after capacity is available |
+| UAT-10 | Missing/conflicting policy | Planned | Execute after capacity is available |
 
-## Ten-minute team demonstration
-
-1. **Problem and current state, 1 minute:** inconsistent searching, drafting, and informal approvals.
-2. **Controlled knowledge, 1 minute:** show active synthetic policies and ownership metadata.
-3. **Inbound message, 1 minute:** send a synthetic email to the pilot folder.
-4. **Grounded drafting, 2 minutes:** show the Power Automate run and agent response.
-5. **Human review, 2 minutes:** edit and approve the Teams card.
-6. **Audit, 1 minute:** show draft, final response, reviewer, and timestamps in SharePoint.
-7. **Failure or escalation, 1 minute:** demonstrate a privacy incident or unsupported question.
-8. **Adoption and next steps, 1 minute:** show pilot measures, feedback route, limitations, and ownership.
+The full production UAT catalogue is retained as a roadmap; only results supported by screenshots or platform errors are marked passed or partial.
 
 ## 60-second interview explanation
 
-I designed a low-code AI Customer Email Assistant using Microsoft Copilot Studio, Power Automate, SharePoint, Outlook, and Teams. Power Automate detects an eligible email and calls a published Copilot Studio agent. The agent drafts a response using only approved SharePoint policy knowledge and treats the email as untrusted content. Every draft is posted to an editable Teams Adaptive Card, and nothing is sent until a human reviewer verifies and approves it. SharePoint records the original inquiry, AI draft, final response, reviewer, decision, timestamps, and exceptions. I also defined knowledge ownership, UAT, failure paths, adoption feedback, and pilot measures. This demonstrates workflow redesign and governed AI adoption, not just chatbot configuration.
+I built and published a low-code policy-response workflow in Microsoft Copilot Studio. Two manual inputs feed a governed Agent that uses embedded synthetic policies, treats the inquiry as untrusted content, and returns a draft, policy basis, and reviewer note. The workflow then creates a Human Review request, evaluates a Yes/No approval decision, and records separate approved or revision outcomes with reviewer comments. I validated the Agent node and confirmed that the Outlook review form was delivered. The tenant then blocked the callback and complete run through connector and Copilot Credit constraints. I documented those failures instead of claiming end-to-end completion, and defined the production roadmap for managed knowledge, durable audit storage, monitoring, environment promotion, and full UAT.
 
 ## Interview questions and answers
 
-### Why use Copilot Studio and Power Automate together?
+### What did you personally implement?
 
-Copilot Studio handles grounded natural-language drafting. Power Automate handles the deterministic process: email trigger, state changes, Teams review, dispatch, audit, retries, and failure routing. This separation keeps AI flexible while business controls remain predictable.
+I configured and published the Copilot Studio Workflow, defined the two trigger inputs, wrote the Agent instructions and synthetic policies, configured Human Review, built the approval condition, added separate outcome variables, tested the Agent, and maintained the evidence and governance documentation.
 
-### Did you create a vector database?
+### Is this a Power Automate project?
 
-No. I configured SharePoint as a managed Copilot Studio knowledge source. Microsoft handles the retrieval infrastructure, and SharePoint access is evaluated through the authenticated user's permissions. I would not claim that I built or administered a separate Azure AI Search vector index.
+The working asset is a **Copilot Studio Workflow** that uses Microsoft’s low-code workflow and Human Review capabilities. Power Automate is documented as the target production orchestration option for mailbox triggers, durable records, notifications, retries, and downstream actions; it is not represented as an executed cloud flow.
 
-### How do you reduce hallucination risk?
+### Did you implement RAG or a vector database?
 
-The agent uses only approved knowledge, refuses to fill unsupported gaps, identifies its policy basis, treats email content as untrusted, and requires human verification. UAT includes missing, conflicting, adversarial, and high-risk cases.
+No. The validated build uses inline governed synthetic policy context because the tenant did not provide an approved file-upload or SharePoint knowledge source. The production design proposes managed knowledge and retrieval after governance and access approval.
 
-### Why is human review mandatory?
+### How do you reduce hallucination and prompt-injection risk?
 
-Customer communication creates operational, reputational, privacy, and legal risk. The reviewer remains accountable, can edit the response, and confirms the final message against approved sources. The system logs the draft and final response for traceability.
+The Agent may rely only on the embedded policy set, must identify its policy basis, must state when support is absent, treats the customer inquiry as untrusted data, escalates high-risk topics, and never sends a response autonomously.
 
-### How does this align with AI transformation rather than simple automation?
+### Why is Human Review mandatory?
 
-The work includes process analysis, knowledge governance, stakeholder ownership, low-code delivery, security controls, UAT, change communication, adoption feedback, operational support, and benefits measurement. The technology is one part of the transformation plan.
+External communication can create privacy, legal, operational, and reputational risk. Human Review preserves accountability and provides an explicit decision and reviewer-comment trail before any future outbound action.
 
-### How would you integrate legal platforms later?
+### What did the failed callback teach you?
 
-I would use vendor-supported APIs and approved Power Platform connectors, preserve source-system permissions and ethical walls, and add the integration only after security, privacy, records, and legal-technology review. The portfolio demonstration does not include proprietary credentials.
+A rendered approval form is not proof of a completed workflow. Production readiness requires callback validation, service health, licensing and capacity checks, timeout and retry behavior, support ownership, and test evidence across both branches.
 
-## Resume bullets after implementation
+### How does this demonstrate AI transformation?
 
-Use only bullets supported by completed evidence:
+The work covers use-case selection, requirements, process redesign, low-code configuration, responsible-AI controls, stakeholder ownership, UAT, evidence management, constraint diagnosis, and a staged production roadmap—not only prompt writing.
 
-- Designed and implemented a low-code, policy-grounded customer email drafting pilot using Copilot Studio, Power Automate, SharePoint, Outlook, and Teams.
-- Embedded mandatory human review through editable Teams Adaptive Cards and captured end-to-end decision evidence in SharePoint.
-- Defined knowledge governance, prompt-injection controls, exception handling, UAT scenarios, operating ownership, and adoption measures for an AI-enabled workflow.
-- Partnered across business, security, privacy, knowledge, and platform roles to translate a manual email process into a governed pilot design.
+### What would you do next?
 
-Do not state an 80% reduction unless an executed pilot, documented baseline, adequate sample, and accountable sponsor validate that result. Until then, describe cycle-time reduction as a target.
+Secure approved capacity; move policies to a managed knowledge source; repair or replace the Human Review callback; add correlation IDs and durable audit records; configure monitoring and exception handling; package the solution; promote through controlled environments; and execute full UAT with business, legal, privacy, security, records, architecture, and platform owners.
 
+## Evidence-safe resume bullets
+
+- Built and published a governed Microsoft Copilot Studio Workflow for policy-response drafting with mandatory Human Review and approval branching.
+- Designed prompt-injection, escalation, data-minimization, and no-autonomous-send controls using synthetic policy content.
+- Validated Agent-node output and Human Review request delivery; documented tenant credit and notification dependencies that blocked complete execution.
+- Produced requirements, RACI, risk controls, UAT artefacts, evidence, and a staged production roadmap for a low-code AI pilot.
+
+Do not claim production deployment, end-to-end completion, a SharePoint knowledge connection, a Power Automate cloud-flow run, customer-email dispatch, or measured time savings until evidence exists.
