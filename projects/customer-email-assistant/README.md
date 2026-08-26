@@ -73,6 +73,7 @@ This is an inline governed-context implementation. I do not present it as RAG, a
 | [copilot-agent-instructions.md](copilot-agent-instructions.md) | Instructions and synthetic policy context used in the Agent |
 | [conversational-agent-deployment.md](conversational-agent-deployment.md) | User-query trigger design, tenant blocker, deployment steps, and acceptance criteria |
 | [teams-chatbot-end-to-end-blueprint.md](teams-chatbot-end-to-end-blueprint.md) | Teams architecture, current-workflow reuse, data contracts, failure behavior, and UAT |
+| [teams-chatbot-rtm-and-uat.md](teams-chatbot-rtm-and-uat.md) | Teams requirements traceability, acceptance tests, and required evidence |
 | [business-requirements.md](business-requirements.md) | Problem, scope, requirements, stakeholders, and acceptance criteria |
 | [governance-and-controls.md](governance-and-controls.md) | Risks, ownership, responsible-AI controls, and go-live gates |
 | [exception-handling.md](exception-handling.md) | Fail-closed production resilience design |
