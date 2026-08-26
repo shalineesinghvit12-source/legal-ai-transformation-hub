@@ -12,14 +12,14 @@ The implemented workflow uses a **Manual** Start trigger. A tester opens the wor
 
 I prepared a conversational-agent configuration so a user message could become the trigger. Copilot Studio refused to create the agent because the academic tenant reported **User license not found** and insufficient permission to create agents. The exact target design, administrator prerequisites, deployment steps, and acceptance criteria are documented in [Conversational Agent Deployment](conversational-agent-deployment.md).
 
-~~~mermaid
+```mermaid
 flowchart LR
     A["Start<br/>EmailSubject + CustomerInquiry"] --> B["Agent<br/>instructions + synthetic policies"]
     B --> C["Human Review<br/>decision + comments"]
     C --> D{"ApprovalDecision = Yes?"}
     D -->|Yes| E["ApprovedStatus<br/>ApprovedForRelease"]
     D -->|Else| F["RejectedStatus<br/>RevisionRequired"]
-~~~
+```
 
 | Capability | Status | Evidence |
 | --- | --- | --- |
