@@ -32,6 +32,28 @@ My implementation includes:
 - redacted Outlook Human Review delivery evidence
 - requirements, governance controls, UAT artefacts, exception design, and interview documentation
 
+## Phase 2: end-to-end Teams chatbot
+
+I designed the next implementation phase to turn the current workflow into a responsive Teams chatbot without discarding the work already completed.
+
+~~~mermaid
+flowchart TD
+    A["User asks in Teams"] --> B["Copilot Studio agent"]
+    B --> C["Generate governed draft"]
+    C --> D["Draft returned as unapproved"]
+    D --> E{"Submit for review?"}
+    E -->|Yes| F["Create RequestId"]
+    F --> G["Existing Human Review logic"]
+    G --> H{"Approve or revise"}
+    H --> I["Recorded status available in Teams"]
+~~~
+
+The design preserves the current Agent instructions, Human Review, approval condition and outcome variables. It separates immediate chat responses from the long-running reviewer decision so the Teams conversation remains responsive.
+
+See the [End-to-End Teams Chatbot Blueprint](projects/customer-email-assistant/teams-chatbot-end-to-end-blueprint.md) for component design, data contracts, implementation sequence, exception handling and UAT criteria.
+
+This phase is designed but not yet claimed as implemented. Agent creation, Teams publication and complete review testing still require the appropriate tenant license, role, capacity and approved connectors.
+
 ## Verified status
 
 | Component | Status |
@@ -76,6 +98,7 @@ The Outlook evidence proves that the Human Review request was delivered and rend
 - [Implementation status](projects/customer-email-assistant/IMPLEMENTATION-STATUS.md)
 - [Agent instructions](projects/customer-email-assistant/copilot-agent-instructions.md)
 - [Conversational agent deployment](projects/customer-email-assistant/conversational-agent-deployment.md)
+- [End-to-end Teams chatbot blueprint](projects/customer-email-assistant/teams-chatbot-end-to-end-blueprint.md)
 - [Business requirements](projects/customer-email-assistant/business-requirements.md)
 - [Governance and controls](projects/customer-email-assistant/governance-and-controls.md)
 - [Exception handling and resilience](projects/customer-email-assistant/exception-handling.md)
